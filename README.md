@@ -1,8 +1,8 @@
-# Welcome to cloverDESKTOP!
-cloverDESKTOP is a modern, Aero-themed DE for Linux made with GTK3
+# Welcome to Cloverium!
+Cloverium is a modern, Aero-themed DE for Linux made with GTK3
 
 # Screenshots:
-![cloverDESKTOP](clover3.png "cloverDESKTOP")
+![Cloverium](clover3.png "Cloverium")
 
 # Install dependecies:
 
