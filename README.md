@@ -6,9 +6,4 @@ Cloverium is a modern, Aero-themed DE for Linux made with GTK3
 
 # Install dependecies:
 
-## Debian
-sudo apt update
-sudo apt install imagemagick grep awk
-
-## Arch Linux
-sudo pacman -S imagemagick grep awk
+## imagemagick grep awk
