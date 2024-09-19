@@ -1,0 +1,41 @@
+/* General button styles */
+button {
+    padding: 10px 20px;               /* Button padding (top padding increased to 10px) */
+    border: none;                     /* Remove default border */
+    border-radius: 2px;              /* Slightly rounded corners */
+    font-family: 'Ubuntu', Arial, sans-serif; /* Font style */
+    font-weight: 400; /* Normal weight */
+    font-size: 16px;                  /* Font size */
+    color: #ffffff;                   /* Text color */
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    /* Add margin-top to push the button down */
+    margin-top: 2px;
+    margin-top: 2px;
+}
+
+/* Hover effect */
+button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+}
+
+/* Focus state for accessibility */
+button:focus {
+    outline: 2px solid rgba(5, 86, 179, 0.6); /* Outline to indicate focus */
+    outline-offset: 2px;                      /* Slight offset */
+}
+
+/* Disabled state */
+button:disabled {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent grey background */
+    color: rgba(102, 102, 102, 0.5);            /* Semi-transparent grey text */
+}
+
+/* Additional styles for different button types (optional) */
+.button-secondary {
+    background-color: rgba(108, 117, 125, 0.5); /* Secondary background color */
+}
+
+.button-secondary:hover {
+    background-color: rgba(90, 98, 104, 0.5); /* Darker secondary on hover */
+}
