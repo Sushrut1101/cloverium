@@ -2,7 +2,7 @@ import gi
 import subprocess
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk, GdkPixbuf
+from gi.repository import Gtk, Gdk
 
 class MyWindow(Gtk.Window):
     def __init__(self):
@@ -13,7 +13,7 @@ class MyWindow(Gtk.Window):
         self.add(self.fixed)
 
         # Load an image and set it as a background
-        self.image = Gtk.Image.new_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file("/home/anon/.comfy/menubg.png"))
+        self.image = Gtk.Image.new_from_file("/home/anon/.comfy/menubg.png")
         self.fixed.put(self.image, 0, 0)
 
         # Create a vertical box with added padding
@@ -24,15 +24,9 @@ class MyWindow(Gtk.Window):
         self.load_css()
 
         # Create buttons
-        self.create_button("Web Browser", self.on_button1_clicked)
-        self.create_button("File Explorer", self.on_button2_clicked)
-        self.create_button("Video Player", self.on_button3_clicked)
-        self.create_button("Appearance Settings", self.on_button4_clicked)
-        self.create_button("Display Settings", self.on_button5_clicked)
-        self.create_button("Shut Down", self.on_button6_clicked)
-        self.create_button("Lock Screen", self.on_button7_clicked)
-        self.create_button("Reboot", self.on_button8_clicked)
-        self.create_button("Set Wallpaper", self.on_button9_clicked)
+        self.create_button("Appearance Settings", self.on_button1_clicked)
+        self.create_button("Display Settings", self.on_button2_clicked)
+        self.create_button("Set Wallpaper", self.on_button3_clicked)
 
         # Remove window decorations
         self.set_decorated(False)
@@ -80,57 +74,17 @@ class MyWindow(Gtk.Window):
         self.move(x_position, y_position)
 
     def on_button1_clicked(self, widget):
-        subprocess.Popen(["chromium"])
-        self.destroy()  # Close the menu window
-
-    def on_button2_clicked(self, widget):
-        subprocess.Popen(["thunar"])
-        self.destroy()  # Close the menu window
-
-    def on_button3_clicked(self, widget):
-        subprocess.Popen(["parole"])
-        self.destroy()  # Close the menu window
-
-    def on_button4_clicked(self, widget):
         subprocess.Popen(["xfce4-appearance-settings"])
         self.destroy()  # Close the menu window
 
-    def on_button5_clicked(self, widget):
+    def on_button2_clicked(self, widget):
         subprocess.Popen(["xfce4-display-settings"])
         self.destroy()  # Close the menu window
-
-    def on_button6_clicked(self, widget):
-        subprocess.Popen(["shutdown"])
-        self.destroy()  # Close the menu window
-
-    def on_button7_clicked(self, widget):
-        subprocess.Popen(["xscreensaver-command", "-lock"])
-        self.destroy()  # Close the menu window
-
-    def on_button8_clicked(self, widget):
-        subprocess.Popen(["systemctl", "reboot"])
-        self.destroy()  # Close the menu window
         
-    def on_button9_clicked(self, widget):
+    def on_button3_clicked(self, widget):
         subprocess.Popen(["build/settings"])
         self.destroy()  # Close the menu window
         
-# CSS to make the buttons text larger
-css = b"""
-.large-button {
-    font-size: 24px;  /* Adjust this value for larger text */
-}
-"""
-
-# Load CSS
-style_provider = Gtk.CssProvider()
-style_provider.load_from_data(css)
-Gtk.StyleContext.add_provider_for_screen(
-    Gdk.Screen.get_default(),
-    style_provider,
-    Gtk.STYLE_PROVIDER_PRIORITY_USER
-)
-
 win = MyWindow()
 win.connect("destroy", Gtk.main_quit)
 win.show_all()

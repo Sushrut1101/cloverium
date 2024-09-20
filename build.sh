@@ -16,6 +16,3 @@ fi
 
 # Move compiled programs to build dir
 mv settings build/
-
-# Run the compiled program
-#./your_program
