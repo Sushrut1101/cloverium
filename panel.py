@@ -34,7 +34,7 @@ class Panel(Gtk.Window):
         self.image = Gtk.Image.new_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file("/home/anon/.comfy/panel.png"))
         self.fixed.put(self.image, 0, 0)
 
-        self.start_menu_button = Gtk.Button(label="☰ Menu")
+        self.start_menu_button = Gtk.Button(label="🍀 Menu")
         self.start_menu_button.connect("clicked", self.on_start_menu_clicked)
         self.fixed.put(self.start_menu_button, 5, 2)
         self.start_menu_button.set_size_request(-1, 40)  # Fixed height for the button
@@ -68,7 +68,7 @@ class Panel(Gtk.Window):
 
     def on_start_menu_clicked(self, widget):
         if self.menu_process is None:
-            self.menu_process = subprocess.Popen([sys.executable, "menu.py"])
+            self.menu_process = subprocess.Popen(["build/menu"])
         else:
             self.menu_process.terminate()
             self.menu_process.wait()
@@ -109,7 +109,7 @@ class Panel(Gtk.Window):
 
                     # Create an icon image (you'll need to provide a way to get the icon for the window)
                     # For this example, we'll just use a placeholder icon.
-                    icon_image = Gtk.Image.new_from_file("/path/to/placeholder_icon.png")  
+                    icon_image = Gtk.Image.new_from_file("assets/clover.png")  
                     button_box.pack_start(icon_image, False, False, 0) 
 
                     # Create a label for the button
