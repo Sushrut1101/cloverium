@@ -2,9 +2,9 @@ import subprocess
 import sys
 from datetime import datetime
 import os
-from gi.repository import Pango
 import gi
 gi.require_version('Gtk', '3.0')
+from gi.repository import Pango
 from gi.repository import Gtk, Gdk, GLib, GdkPixbuf 
 
 class Panel(Gtk.Window):
@@ -12,13 +12,18 @@ class Panel(Gtk.Window):
         super().__init__(title="Panel")
         self.load_css()
 
-        screen = Gdk.Screen.get_default()
-        self.width = screen.get_width()
+        # Get screen size using the new algorithm
+        display = Gdk.Display.get_default()
+        monitor = display.get_primary_monitor()
+        scale_factor = monitor.get_scale_factor()
+        geometry = monitor.get_geometry()
+        self.width = geometry.width * scale_factor
         self.height = 50  
 
         self.set_default_size(self.width, self.height)
 
-        y_position = screen.get_height() - self.height  
+        # Calculate y-position based on screen height
+        y_position = geometry.height * scale_factor - self.height
         self.move(0, y_position)
 
         # Necessary settings for the panel to function correctly
