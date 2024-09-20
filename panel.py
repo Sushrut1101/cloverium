@@ -14,7 +14,7 @@ class Panel(Gtk.Window):
 
         screen = Gdk.Screen.get_default()
         self.width = screen.get_width()
-        self.height = 48  
+        self.height = 50  
 
         self.set_default_size(self.width, self.height)
 
@@ -27,34 +27,33 @@ class Panel(Gtk.Window):
         self.set_app_paintable(True)
         self.set_accept_focus(False)
         self.set_keep_above(True)  # Ensure panel stays on top
-
         self.fixed = Gtk.Fixed()
         self.add(self.fixed)
-
         self.image = Gtk.Image.new_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file("/home/anon/.comfy/panel.png"))
         self.fixed.put(self.image, 0, 0)
 
-        self.start_menu_button = Gtk.Button(label="🍀 Menu")
+        # Create a button with an icon
+        self.start_menu_button = Gtk.Button()
         self.start_menu_button.connect("clicked", self.on_start_menu_clicked)
-        self.fixed.put(self.start_menu_button, 5, 2)
-        self.start_menu_button.set_size_request(-1, 40)  # Fixed height for the button
+        self.fixed.put(self.start_menu_button, 5, 1)
+        self.start_menu_button.set_size_request(0, 40)  # Fixed height for the button
 
+        # Load the clover icon
+        clover_icon = Gtk.Image.new_from_file("assets/clover.png")
+        self.start_menu_button.set_image(clover_icon)
         self.clock_button = Gtk.Button(label="")
         self.clock_button.set_size_request(100, 40)  # Fixed height for the button
         self.clock_button.connect("clicked", self.on_clock_clicked)
-        self.fixed.put(self.clock_button, self.width - 105, 2)
+        self.fixed.put(self.clock_button, self.width - 105, 1)
 
         GLib.timeout_add_seconds(1, self.update_clock)
 
         # Task List
         self.tasklist_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        self.fixed.put(self.tasklist_box, 110, 2)
-
+        self.fixed.put(self.tasklist_box, 75, 1)
         self.update_tasklist()
         GLib.timeout_add_seconds(1, self.update_tasklist)  # Refresh every second
-
         self.menu_process = None
-
         self.show_all()
         self.update_clock()
 
@@ -68,7 +67,8 @@ class Panel(Gtk.Window):
 
     def on_start_menu_clicked(self, widget):
         if self.menu_process is None:
-            self.menu_process = subprocess.Popen(["build/menu"])
+            #self.menu_process = subprocess.Popen(["build/menu"])
+            self.menu_process = subprocess.Popen([sys.executable, "menu.py"])
         else:
             self.menu_process.terminate()
             self.menu_process.wait()
