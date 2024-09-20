@@ -112,7 +112,7 @@ class MyWindow(Gtk.Window):
         self.destroy()  # Close the menu window
         
     def on_button9_clicked(self, widget):
-        subprocess.Popen(["python3", "settings.py"])
+        subprocess.Popen(["build/settings"])
         self.destroy()  # Close the menu window
         
 # CSS to make the buttons text larger
