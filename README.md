@@ -1,5 +1,8 @@
 # Welcome to cloverDESKTOP!
-cloverDESKTOP is a Aero-themed panel for Linux written in GTK3
+cloverDESKTOP is a modern, Aero-themed DE for Linux made with GTK3
+
+# Screenshots:
+![cloverDESKTOP](clover3.png "cloverDESKTOP")
 
 # Install dependecies:
 
@@ -11,4 +14,4 @@ sudo apt install imagemagick grep awk
 sudo pacman -S imagemagick grep awk
 
 # Screenshots:
-![cloverDESKTOP](clover2.png "cloverDESKTOP")
+![cloverDESKTOP](clover3.png "cloverDESKTOP")
