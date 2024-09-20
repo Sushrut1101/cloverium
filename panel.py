@@ -35,7 +35,7 @@ class Panel(Gtk.Window):
         # Create a button with an icon
         self.start_menu_button = Gtk.Button()
         self.start_menu_button.connect("clicked", self.on_start_menu_clicked)
-        self.fixed.put(self.start_menu_button, 5, 1)
+        self.fixed.put(self.start_menu_button, 2, 1)    # Button location
         self.start_menu_button.set_size_request(0, 40)  # Fixed height for the button
 
         # Load the clover icon
@@ -44,13 +44,13 @@ class Panel(Gtk.Window):
         self.clock_button = Gtk.Button(label="")
         self.clock_button.set_size_request(100, 40)  # Fixed height for the button
         self.clock_button.connect("clicked", self.on_clock_clicked)
-        self.fixed.put(self.clock_button, self.width - 105, 1)
+        self.fixed.put(self.clock_button, self.width - 103, 1)
 
         GLib.timeout_add_seconds(1, self.update_clock)
 
         # Task List
         self.tasklist_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        self.fixed.put(self.tasklist_box, 75, 1)
+        self.fixed.put(self.tasklist_box, 72, 1)
         self.update_tasklist()
         GLib.timeout_add_seconds(1, self.update_tasklist)  # Refresh every second
         self.menu_process = None
@@ -116,14 +116,14 @@ class Panel(Gtk.Window):
                     label = Gtk.Label(label=title)
                     label.set_ellipsize(Pango.EllipsizeMode.END)  # Ellipsize long titles
                     # Set a fixed width of 150px for the button
-                    label.set_size_request(150, -1) 
+                    label.set_size_request(100, -1) 
                     button_box.pack_start(label, True, True, 0)
 
                     # Create the button with the label
                     button = Gtk.Button()
                     button.add(button_box)
                     button.connect("clicked", self.on_task_clicked, parts[0])  # Pass window ID
-                    button.set_size_request(150, 40)  # Set max width to 100px and fixed height
+                    button.set_size_request(100, 40)  # Set max width to 100px and fixed height
 
                     # Add the button to the task list box
                     self.tasklist_box.pack_start(button, True, True, 0)
