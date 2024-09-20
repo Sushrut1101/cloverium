@@ -12,6 +12,3 @@ sudo apt install imagemagick grep awk
 
 ## Arch Linux
 sudo pacman -S imagemagick grep awk
-
-# Screenshots:
-![cloverDESKTOP](clover3.png "cloverDESKTOP")
