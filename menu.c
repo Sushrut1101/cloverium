@@ -21,8 +21,10 @@ int main(int argc, char *argv[]) {
     // Load an image and set it as a background
     GtkWidget *image = gtk_image_new_from_file("/home/anon/.comfy/menubg.png");
     gtk_fixed_put(GTK_FIXED(fixed), image, 0, 0);
+    
+    // Set user icon
     GtkWidget *image2 = gtk_image_new_from_file("assets/user.png");
-    gtk_fixed_put(GTK_FIXED(fixed), image2, 456, 54);
+    gtk_fixed_put(GTK_FIXED(fixed), image2, 456, 56);
 
     // Create a vertical box to hold the buttons
     GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10);
@@ -55,6 +57,17 @@ int main(int argc, char *argv[]) {
     GtkWidget *button7 = create_button("Settings", "assets/clover.png");
     GtkWidget *button8 = create_button("Search", "assets/clover.png");
 
+    // Set button sizes (before adding to the box)
+    // It also uses the value of button1 on other buttons, idk why tho
+    gtk_widget_set_size_request(button1, 375, 60);
+    gtk_widget_set_size_request(button2, 200, 60);
+    gtk_widget_set_size_request(button3, 200, 60);
+    gtk_widget_set_size_request(button4, 200, 60);
+    gtk_widget_set_size_request(button5, 200, 60);
+    gtk_widget_set_size_request(button6, 200, 60);
+    gtk_widget_set_size_request(button7, 200, 60);
+    gtk_widget_set_size_request(button8, 200, 40);
+
     // Add the buttons to the vertical box
     gtk_box_pack_start(GTK_BOX(vbox), button1, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button2, FALSE, FALSE, 0);
@@ -63,19 +76,22 @@ int main(int argc, char *argv[]) {
     gtk_box_pack_start(GTK_BOX(vbox), button5, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button6, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button7, FALSE, FALSE, 0);
-    // Add button7 with a spacing of 50px
-    gtk_box_pack_start(GTK_BOX(vbox), button8, FALSE, FALSE, 150);
+    gtk_box_pack_start(GTK_BOX(vbox), button8, FALSE, FALSE, 150); // Spacing of 150px
 
-    // Set button size
-    gtk_widget_set_size_request(button1, 375, 60); // Assuming 100x30 is default size
-    gtk_widget_set_size_request(button2, 200, 60);
-    gtk_widget_set_size_request(button3, 200, 60);
-    gtk_widget_set_size_request(button4, 200, 60);
-    gtk_widget_set_size_request(button5, 200, 60);
-    gtk_widget_set_size_request(button6, 200, 60);
-    gtk_widget_set_size_request(button7, 200, 60);
-    gtk_widget_set_size_request(button8, 200, 40);
-    
+    // Create a horizontal box for button9
+    GtkWidget *hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 10);
+    gtk_fixed_put(GTK_FIXED(fixed), hbox, 13, 650); // Position the hbox at the bottom
+
+    // Create button9
+    GtkWidget *button9 = create_button("Shut Down", "assets/clover.png"); // Create button9 here
+
+    // Set button9 size
+    gtk_widget_set_size_request(button9, 100, 40);
+
+    // Add button9 to the horizontal box
+    // For some fucking reason it sucks
+    //gtk_box_pack_start(GTK_BOX(hbox), button9, FALSE, FALSE, 435);
+
     // Make the window visible
     gtk_widget_show_all(window);
 
