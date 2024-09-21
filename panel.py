@@ -46,10 +46,13 @@ class Panel(Gtk.Window):
         # Load the clover icon
         clover_icon = Gtk.Image.new_from_file("assets/clover.png")
         self.start_menu_button.set_image(clover_icon)
-        self.clock_button = Gtk.Button(label="")
-        self.clock_button.set_size_request(100, 40)  # Fixed height for the button
-        self.clock_button.connect("clicked", self.on_clock_clicked)
-        self.fixed.put(self.clock_button, self.width - 103, 1)
+
+        # Create the clock label
+        self.clock_label = Gtk.Label()
+        self.clock_label.set_size_request(100, 40)  # Fixed height for the button
+        self.fixed.put(self.clock_label, self.width - 90, 5)
+        # Set the clock label font size
+        self.clock_label.modify_font(Pango.FontDescription("Sans 16"))  # Adjust font size as needed
 
         GLib.timeout_add_seconds(1, self.update_clock)
 
@@ -85,7 +88,7 @@ class Panel(Gtk.Window):
     def update_clock(self):
         now = datetime.now()
         formatted_time = now.strftime("%H:%M")
-        self.clock_button.set_label(formatted_time)
+        self.clock_label.set_label(formatted_time)  # Set the label text directly
         return True  
 
     def update_tasklist(self):
