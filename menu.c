@@ -1,5 +1,46 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
+#include <stdlib.h> 
+
+void open_browser() {
+    // Execute the dmenu command
+    system("chromium &"); 
+}
+
+void open_file_manager() {
+    // Execute the dmenu command
+    system("thunar &"); 
+}
+
+void open_terminal() {
+    // Execute the dmenu command
+    system("xfce4-terminal"); 
+}
+
+void open_screen_settings() {
+    // Execute the dmenu command
+    system("xfce4-display-settings"); 
+}
+
+void open_appearance_settings() {
+    // Execute the dmenu command
+    system("lxappearance &"); 
+}
+
+void open_set_wallpaper() {
+    // Execute the dmenu command
+    system("build/settings"); 
+}
+
+void open_settings() {
+    // Execute the dmenu command
+    system("build/settings"); 
+}
+
+void open_dmenu() {
+    // Execute the dmenu command
+    system("dmenu_run"); 
+}
 
 int main(int argc, char *argv[]) {
     // Initialize GTK+
@@ -92,6 +133,16 @@ int main(int argc, char *argv[]) {
     // For some fucking reason it sucks
     //gtk_box_pack_start(GTK_BOX(hbox), button9, FALSE, FALSE, 435);
 
+    // Connect a signal to button to open program
+    g_signal_connect(button1, "clicked", G_CALLBACK(open_browser), NULL);
+    g_signal_connect(button2, "clicked", G_CALLBACK(open_file_manager), NULL);
+    g_signal_connect(button3, "clicked", G_CALLBACK(open_terminal), NULL);
+    g_signal_connect(button4, "clicked", G_CALLBACK(open_screen_settings), NULL);
+    g_signal_connect(button5, "clicked", G_CALLBACK(open_appearance_settings), NULL);
+    g_signal_connect(button6, "clicked", G_CALLBACK(open_set_wallpaper), NULL);
+    g_signal_connect(button7, "clicked", G_CALLBACK(open_settings), NULL);
+    g_signal_connect(button8, "clicked", G_CALLBACK(open_dmenu), NULL);
+
     // Make the window visible
     gtk_widget_show_all(window);
 
@@ -115,3 +166,4 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+
