@@ -26,13 +26,30 @@ int main(int argc, char *argv[]) {
     GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10);
     gtk_fixed_put(GTK_FIXED(fixed), vbox, 13, 10); // Position the box at the top-left
 
-    // Create the buttons
-    GtkWidget *button1 = gtk_button_new_with_label("Button 1");
-    GtkWidget *button2 = gtk_button_new_with_label("Button 2");
-    GtkWidget *button3 = gtk_button_new_with_label("Button 3");
-    GtkWidget *button4 = gtk_button_new_with_label("Button 4");
-    GtkWidget *button5 = gtk_button_new_with_label("Button 5");
-    GtkWidget *button6 = gtk_button_new_with_label("Button 6");
+    // Create a helper function to create buttons with images and labels
+    GtkWidget *create_button(const gchar *label, const gchar *icon_path) {
+        GtkWidget *button = gtk_button_new();
+        GtkWidget *label_widget = gtk_label_new(label);
+        GtkWidget *icon_widget = gtk_image_new_from_file(icon_path);
+
+        // Create a horizontal box to hold the icon and label
+        GtkWidget *hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), icon_widget, FALSE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(hbox), label_widget, FALSE, FALSE, 0);
+
+        // Set the hbox as the child of the button
+        gtk_container_add(GTK_CONTAINER(button), hbox);
+
+        return button;
+    }
+
+    // Create buttons using the helper function
+    GtkWidget *button1 = create_button("Button 1", "assets/clover.png");
+    GtkWidget *button2 = create_button("Button 2", "assets/clover.png");
+    GtkWidget *button3 = create_button("Button 3", "assets/clover.png");
+    GtkWidget *button4 = create_button("Button 4", "assets/clover.png");
+    GtkWidget *button5 = create_button("Button 5", "assets/clover.png");
+    GtkWidget *button6 = create_button("Button 6", "assets/clover.png");
 
     // Add the buttons to the vertical box
     gtk_box_pack_start(GTK_BOX(vbox), button1, FALSE, FALSE, 0);
@@ -41,6 +58,14 @@ int main(int argc, char *argv[]) {
     gtk_box_pack_start(GTK_BOX(vbox), button4, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button5, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button6, FALSE, FALSE, 0);
+
+    // Set button size
+    gtk_widget_set_size_request(button1, 375, 60); // Assuming 100x30 is default size
+    gtk_widget_set_size_request(button2, 200, 60);
+    gtk_widget_set_size_request(button3, 200, 60);
+    gtk_widget_set_size_request(button4, 200, 60);
+    gtk_widget_set_size_request(button5, 200, 60);
+    gtk_widget_set_size_request(button6, 200, 60);
 
     // Make the window visible
     gtk_widget_show_all(window);
