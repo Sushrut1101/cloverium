@@ -21,6 +21,8 @@ int main(int argc, char *argv[]) {
     // Load an image and set it as a background
     GtkWidget *image = gtk_image_new_from_file("/home/anon/.comfy/menubg.png");
     gtk_fixed_put(GTK_FIXED(fixed), image, 0, 0);
+    GtkWidget *image2 = gtk_image_new_from_file("assets/user.png");
+    gtk_fixed_put(GTK_FIXED(fixed), image2, 455, 20);
 
     // Create a vertical box to hold the buttons
     GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10);
@@ -87,7 +89,6 @@ int main(int argc, char *argv[]) {
     // Set the window position to the bottom left corner, adjusted for the 50px margin
     gtk_window_move(GTK_WINDOW(window), 3, screen_height - 640 - 130);
 
-    
     // Load CSS stylesheet
     GtkCssProvider *provider = gtk_css_provider_new();
     gtk_css_provider_load_from_file(provider, g_file_new_for_path("style.css"), NULL);
