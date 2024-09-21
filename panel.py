@@ -72,8 +72,8 @@ class Panel(Gtk.Window):
 
     def on_start_menu_clicked(self, widget):
         if self.menu_process is None:
-            #self.menu_process = subprocess.Popen(["build/menu"])
-            self.menu_process = subprocess.Popen([sys.executable, "menu.py"])
+            self.menu_process = subprocess.Popen(["build/menu"])
+            #self.menu_process = subprocess.Popen([sys.executable, "menu.py"])
         else:
             self.menu_process.terminate()
             self.menu_process.wait()
@@ -112,8 +112,7 @@ class Panel(Gtk.Window):
                     button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
                     button_box.set_halign(Gtk.Align.START)  # Align to the left
 
-                    # Create an icon image (you'll need to provide a way to get the icon for the window)
-                    # For this example, we'll just use a placeholder icon.
+                    # Create an icon image
                     icon_image = Gtk.Image.new_from_file("assets/clover.png")  
                     button_box.pack_start(icon_image, False, False, 0) 
 

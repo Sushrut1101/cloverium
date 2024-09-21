@@ -23,8 +23,21 @@ int main(int argc, char *argv[]) {
     // Add the box to the window
     gtk_container_add(GTK_CONTAINER(window), vbox);
 
-    // Make the window visible
+    // Make the window visible (this will trigger realization and size calculation)
     gtk_widget_show_all(window);
+
+    // Get the screen
+    GdkScreen *screen = gdk_screen_get_default();
+
+    // Get the screen's width and height
+    int screen_width = gdk_screen_get_width(screen);
+    int screen_height = gdk_screen_get_height(screen);
+
+    // Get the window's actual height after realization
+    int window_height = gtk_widget_get_allocated_height(window);
+
+    // Set the window position to the bottom left corner, adjusted for the 50px margin
+    gtk_window_move(GTK_WINDOW(window), 0, screen_height - window_height - 50);
 
     // Start the GTK+ event loop
     gtk_main();

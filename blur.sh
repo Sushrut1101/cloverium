@@ -13,7 +13,7 @@ convert /home/$USER/.comfy/wp.png -gravity South -crop ${crop_width}x${crop_heig
 composite -dissolve 40 assets/taskbaroverlay.png  /home/$USER/.comfy/cropped.png /home/$USER/.comfy/panel.png
 
 # Calculate the desired crop dimensions for the menu
-crop_width=400
+crop_width=640
 crop_height=720
 
 # Crop the image and apply blur to the menu
