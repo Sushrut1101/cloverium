@@ -44,12 +44,14 @@ int main(int argc, char *argv[]) {
     }
 
     // Create buttons using the helper function
-    GtkWidget *button1 = create_button("Button 1", "assets/clover.png");
-    GtkWidget *button2 = create_button("Button 2", "assets/clover.png");
-    GtkWidget *button3 = create_button("Button 3", "assets/clover.png");
-    GtkWidget *button4 = create_button("Button 4", "assets/clover.png");
-    GtkWidget *button5 = create_button("Button 5", "assets/clover.png");
-    GtkWidget *button6 = create_button("Button 6", "assets/clover.png");
+    GtkWidget *button1 = create_button("Web Browser", "assets/clover.png");
+    GtkWidget *button2 = create_button("File Manager", "assets/clover.png");
+    GtkWidget *button3 = create_button("Terminal", "assets/clover.png");
+    GtkWidget *button4 = create_button("Screen Settings", "assets/clover.png");
+    GtkWidget *button5 = create_button("Appearance Settings", "assets/clover.png");
+    GtkWidget *button6 = create_button("Set Wallpaper", "assets/clover.png");
+    GtkWidget *button7 = create_button("Settings", "assets/clover.png");
+    GtkWidget *button8 = create_button("Search", "assets/clover.png");
 
     // Add the buttons to the vertical box
     gtk_box_pack_start(GTK_BOX(vbox), button1, FALSE, FALSE, 0);
@@ -58,6 +60,9 @@ int main(int argc, char *argv[]) {
     gtk_box_pack_start(GTK_BOX(vbox), button4, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button5, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button6, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), button7, FALSE, FALSE, 0);
+    // Add button7 with a spacing of 50px
+    gtk_box_pack_start(GTK_BOX(vbox), button8, FALSE, FALSE, 150);
 
     // Set button size
     gtk_widget_set_size_request(button1, 375, 60); // Assuming 100x30 is default size
@@ -66,7 +71,9 @@ int main(int argc, char *argv[]) {
     gtk_widget_set_size_request(button4, 200, 60);
     gtk_widget_set_size_request(button5, 200, 60);
     gtk_widget_set_size_request(button6, 200, 60);
-
+    gtk_widget_set_size_request(button7, 200, 60);
+    gtk_widget_set_size_request(button8, 200, 40);
+    
     // Make the window visible
     gtk_widget_show_all(window);
 
@@ -80,6 +87,7 @@ int main(int argc, char *argv[]) {
     // Set the window position to the bottom left corner, adjusted for the 50px margin
     gtk_window_move(GTK_WINDOW(window), 3, screen_height - 640 - 130);
 
+    
     // Load CSS stylesheet
     GtkCssProvider *provider = gtk_css_provider_new();
     gtk_css_provider_load_from_file(provider, g_file_new_for_path("style.css"), NULL);
