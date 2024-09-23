@@ -21,7 +21,7 @@ button:hover {
 
 /* Focus state for accessibility */
 button:focus {
-    outline: 2px solid rgba(5, 86, 179, 0.6); /* Outline to indicate focus */
+    outline: 2px solid rgba(255, 255, 255, 0.6); /* Outline to indicate focus */
     outline-offset: 2px;                      /* Slight offset */
 }
 
