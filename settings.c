@@ -7,25 +7,15 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-// Define the destination path for the background image
 #define DESTINATION_PATH "/home/anon/.comfy/wp.png"
 
 // Function to set the background image
 void set_background(const char *image_path) {
-    // Copy the image to the destination path
     if (copy_file(image_path, DESTINATION_PATH) == -1) {
-        // Handle copy error (e.g., display an error dialog)
         g_print("Error copying image to destination.");
         return;
     }
 
-    // Refresh the desktop background (replace with your DE's method)
-    // Example for GNOME:
-    // char command[256];
-    // sprintf(command, "gsettings set org.gnome.desktop.background picture-uri file://%s", DESTINATION_PATH);
-    // system(command);
-
-    // Restart panel (replace with your actual panel process name)
     restart_panel();
 }
 
@@ -69,10 +59,10 @@ int copy_file(const char *src, const char *dest) {
 
 // Function to restart a process
 void restart_panel() {
-    // Kill existing process (replace with your actual process name)
+    // Kill existing process
     system("pkill -f panel.py");
 
-    // Restart the process (replace with your actual process name)
+    // Restart the process
     system("python3 panel.py &");
 }
 
@@ -101,13 +91,11 @@ void on_choose_image(GtkButton *button, gpointer user_data) {
         // Get the selected image path
         char *selected_image = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
         if (selected_image) {
-            // Set the background with the selected image
             set_background(selected_image);
             g_free(selected_image);
         }
     }
 
-    // Destroy the dialog
     gtk_widget_destroy(dialog);
 }
 
@@ -134,10 +122,8 @@ int main(int argc, char *argv[]) {
     g_signal_connect(button, "clicked", G_CALLBACK(on_choose_image), NULL);
     gtk_box_pack_start(GTK_BOX(vbox), button, TRUE, TRUE, 0);
 
-    // Show all widgets
     gtk_widget_show_all(window);
-
-    // Start the GTK main loop
+    
     gtk_main();
 
     return 0;
