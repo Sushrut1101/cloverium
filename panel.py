@@ -74,6 +74,7 @@ class Panel(Gtk.Window):
 
     def on_start_menu_clicked(self, widget):
         if self.menu_process is None:
+            self.menu_process = subprocess.Popen(["sh", "build.sh"])
             self.menu_process = subprocess.Popen(["build/menu"])
             #self.menu_process = subprocess.Popen([sys.executable, "menu.py"])
         else:
