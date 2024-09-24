@@ -99,6 +99,12 @@ void on_choose_image(GtkButton *button, gpointer user_data) {
     gtk_widget_destroy(dialog);
 }
 
+// Callback for the "Open xfce4-appearance-settings" button
+void on_open_theme_settings(GtkButton *button, gpointer user_data) {
+    // Open xfce4-appearance-settings
+    system("xfce4-appearance-settings &");
+}
+
 // Main function
 int main(int argc, char *argv[]) {
     GtkWidget *window;
@@ -110,19 +116,28 @@ int main(int argc, char *argv[]) {
 
     // Create the main window
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(window), "Set Background");
-    gtk_window_set_default_size(GTK_WINDOW(window), 300, 100);
+    gtk_window_set_title(GTK_WINDOW(window), "Settings");
+    gtk_window_set_default_size(GTK_WINDOW(window), 300, 150); // Adjusted height for two buttons
 
     // Create a vertical box to hold the widgets
     vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
     gtk_container_add(GTK_CONTAINER(window), vbox);
 
     // Create the "Choose Image" button
-    button = gtk_button_new_with_label("Choose Image");
+    button = gtk_button_new_with_label("Set wallpaper (Might need to set it twice and reset panel)");
     g_signal_connect(button, "clicked", G_CALLBACK(on_choose_image), NULL);
     gtk_box_pack_start(GTK_BOX(vbox), button, TRUE, TRUE, 0);
 
+    // Create the "Open Thunar" button
+    button = gtk_button_new_with_label("Open Thunar");
+    g_signal_connect(button, "clicked", G_CALLBACK(on_open_theme_settings), NULL);
+    gtk_box_pack_start(GTK_BOX(vbox), button, TRUE, TRUE, 0);
+
     gtk_widget_show_all(window);
+
+    GtkCssProvider *provider = gtk_css_provider_new();
+    gtk_css_provider_load_from_file(provider, g_file_new_for_path("style.css"), NULL);
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(), GTK_STYLE_PROVIDER(provider), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     
     gtk_main();
 

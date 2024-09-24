@@ -71,9 +71,9 @@ int main(int argc, char *argv[]) {
     GtkWidget *button2 = create_button("File Manager", "assets/folder.png");
     GtkWidget *button3 = create_button("Terminal", "assets/terminal.png");
     GtkWidget *button4 = create_button("Screen Settings", "assets/settings.png");
-    GtkWidget *button5 = create_button("Set Wallpaper", "assets/settings.png");
+    GtkWidget *button5 = create_button("Settings", "assets/settings.png");
     GtkWidget *button6 = create_button("Search", "assets/search.png");
-    GtkWidget *button7 = create_button("Shut Down", "assets/power.png");
+    GtkWidget *button7 = create_button("Turn Off", "assets/power.png");
 
     gtk_widget_set_size_request(button1, 375, 60);
     gtk_widget_set_size_request(button2, 200, 60);
