@@ -8,11 +8,9 @@ void open_browser() {
 
 void open_file_manager() {
     system("thunar &"); 
-
 }
 
 void open_terminal() {
-    system("pkill -f build/menu");
     system("xfce4-terminal");
 }
 
@@ -54,8 +52,8 @@ int main(int argc, char *argv[]) {
     GtkWidget *image = gtk_image_new_from_file("/home/anon/.comfy/menubg.png");
     gtk_fixed_put(GTK_FIXED(fixed), image, 0, 0);
     
-    GtkWidget *image2 = gtk_image_new_from_file("assets/user.png");
-    gtk_fixed_put(GTK_FIXED(fixed), image2, 456, 56);
+    //GtkWidget *image2 = gtk_image_new_from_file("assets/user.png");
+    //gtk_fixed_put(GTK_FIXED(fixed), image2, 456, 56);
 
     GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10);
     gtk_fixed_put(GTK_FIXED(fixed), vbox, 13, 10);
