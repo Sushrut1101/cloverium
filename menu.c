@@ -23,8 +23,10 @@ void open_set_wallpaper() {
 }
 
 void open_search() {
-    system("rofi -show run -theme-str \"window { location: south; anchor: southeast; }\""); 
+    system("rofi -show run -theme-str \"window { location: southwest; anchor: southwest; width: 360; height: 260; }\""); 
+    
 }
+
 void open_shutdown() {
     system("systemctl poweroff"); 
 }
