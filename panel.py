@@ -35,6 +35,7 @@ class Panel(Gtk.Window):
         self.set_keep_above(True)  # Ensure panel stays on top
         self.fixed = Gtk.Fixed()
         self.add(self.fixed)
+        #self.image = Gtk.Image.new_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file("assets/taskbar9x.png"))
         self.image = Gtk.Image.new_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file("/home/anon/.comfy/panel.png"))
         self.fixed.put(self.image, 0, 0)
 

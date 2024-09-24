@@ -47,6 +47,7 @@ int main(int argc, char *argv[]) {
     GtkWidget *fixed = gtk_fixed_new();
     gtk_container_add(GTK_CONTAINER(window), fixed);
 
+    //GtkWidget *image = gtk_image_new_from_file("assets/menu9x.png");
     GtkWidget *image = gtk_image_new_from_file("/home/anon/.comfy/menubg.png");
     gtk_fixed_put(GTK_FIXED(fixed), image, 0, 0);
     
