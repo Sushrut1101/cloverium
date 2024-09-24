@@ -4,22 +4,27 @@
 
 void open_browser() {
     system("firefox &"); 
+    system("pkill -f \"build/menu\"");
 }
 
 void open_file_manager() {
     system("thunar &"); 
+    system("pkill -f \"build/menu\"");
 }
 
 void open_terminal() {
     system("xfce4-terminal &");
+    system("pkill -f \"build/menu\"");
 }
 
 void open_screen_settings() {
     system("xfce4-display-settings &"); 
+    system("pkill -f \"build/menu\"");
 }
 
 void open_set_wallpaper() {
     system("build/settings &"); 
+    system("pkill -f \"build/menu\"");
 }
 
 void open_search() {
