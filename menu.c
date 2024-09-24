@@ -18,20 +18,12 @@ void open_screen_settings() {
     system("xfce4-display-settings"); 
 }
 
-void open_appearance_settings() {
-    system("lxappearance &"); 
-}
-
 void open_set_wallpaper() {
     system("build/settings"); 
 }
 
-void open_settings() {
-    system("build/settings"); 
-}
-
-void open_dmenu() {
-    system("dmenu_run"); 
+void open_search() {
+    system("rofi -show run -theme-str \"window { location: south; anchor: southeast; }\""); 
 }
 void open_shutdown() {
     system("systemctl poweroff"); 
@@ -101,7 +93,7 @@ int main(int argc, char *argv[]) {
     g_signal_connect(button3, "clicked", G_CALLBACK(open_terminal), NULL);
     g_signal_connect(button4, "clicked", G_CALLBACK(open_screen_settings), NULL);
     g_signal_connect(button5, "clicked", G_CALLBACK(open_set_wallpaper), NULL);
-    g_signal_connect(button6, "clicked", G_CALLBACK(open_dmenu), NULL);
+    g_signal_connect(button6, "clicked", G_CALLBACK(open_search), NULL);
     g_signal_connect(button7, "clicked", G_CALLBACK(open_shutdown), NULL);
 
     gtk_widget_show_all(window);
