@@ -8,10 +8,12 @@ void open_browser() {
 
 void open_file_manager() {
     system("thunar &"); 
+
 }
 
 void open_terminal() {
-    system("xfce4-terminal"); 
+    system("pkill -f build/menu");
+    system("xfce4-terminal");
 }
 
 void open_screen_settings() {
