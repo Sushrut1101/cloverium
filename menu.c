@@ -73,44 +73,36 @@ int main(int argc, char *argv[]) {
     GtkWidget *button2 = create_button("File Manager", "assets/folder.png");
     GtkWidget *button3 = create_button("Terminal", "assets/terminal.png");
     GtkWidget *button4 = create_button("Screen Settings", "assets/settings.png");
-    GtkWidget *button5 = create_button("Appearance Settings", "assets/settings.png");
-    GtkWidget *button6 = create_button("Set Wallpaper", "assets/settings.png");
-    GtkWidget *button7 = create_button("Settings", "assets/settings.png");
-    GtkWidget *button8 = create_button("Search", "assets/search.png");
-    GtkWidget *button9 = create_button("Shut Down", "assets/power.png");
+    GtkWidget *button5 = create_button("Set Wallpaper", "assets/settings.png");
+    GtkWidget *button6 = create_button("Search", "assets/search.png");
+    GtkWidget *button7 = create_button("Shut Down", "assets/power.png");
 
     gtk_widget_set_size_request(button1, 375, 60);
     gtk_widget_set_size_request(button2, 200, 60);
     gtk_widget_set_size_request(button3, 200, 60);
     gtk_widget_set_size_request(button4, 200, 60);
     gtk_widget_set_size_request(button5, 200, 60);
-    gtk_widget_set_size_request(button6, 200, 60);
-    gtk_widget_set_size_request(button7, 200, 60);
-    gtk_widget_set_size_request(button8, 200, 40);
-    gtk_widget_set_size_request(button9, 100, 40);
+    gtk_widget_set_size_request(button6, 200, 40);
+    gtk_widget_set_size_request(button7, 100, 40);
 
     gtk_box_pack_start(GTK_BOX(vbox), button1, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button2, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button3, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button4, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), button5, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox), button6, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox), button7, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox), button8, FALSE, FALSE, 150); 
+    gtk_box_pack_start(GTK_BOX(vbox), button6, FALSE, FALSE, 290); 
 
     GtkWidget *hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 10);
     gtk_fixed_put(GTK_FIXED(fixed), hbox, 450, 650); 
-    gtk_box_pack_start(GTK_BOX(hbox), button9, FALSE, FALSE, 0); 
+    gtk_box_pack_start(GTK_BOX(hbox), button7, FALSE, FALSE, 0); 
 
     g_signal_connect(button1, "clicked", G_CALLBACK(open_browser), NULL);
     g_signal_connect(button2, "clicked", G_CALLBACK(open_file_manager), NULL);
     g_signal_connect(button3, "clicked", G_CALLBACK(open_terminal), NULL);
     g_signal_connect(button4, "clicked", G_CALLBACK(open_screen_settings), NULL);
-    g_signal_connect(button5, "clicked", G_CALLBACK(open_appearance_settings), NULL);
-    g_signal_connect(button6, "clicked", G_CALLBACK(open_set_wallpaper), NULL);
-    g_signal_connect(button7, "clicked", G_CALLBACK(open_settings), NULL);
-    g_signal_connect(button8, "clicked", G_CALLBACK(open_dmenu), NULL);
-    g_signal_connect(button9, "clicked", G_CALLBACK(open_shutdown), NULL);
+    g_signal_connect(button5, "clicked", G_CALLBACK(open_set_wallpaper), NULL);
+    g_signal_connect(button6, "clicked", G_CALLBACK(open_dmenu), NULL);
+    g_signal_connect(button7, "clicked", G_CALLBACK(open_shutdown), NULL);
 
     gtk_widget_show_all(window);
 
