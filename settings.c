@@ -128,8 +128,7 @@ int main(int argc, char *argv[]) {
     g_signal_connect(button, "clicked", G_CALLBACK(on_choose_image), NULL);
     gtk_box_pack_start(GTK_BOX(vbox), button, TRUE, TRUE, 0);
 
-    // Create the "Open Thunar" button
-    button = gtk_button_new_with_label("Open Thunar");
+    button = gtk_button_new_with_label("Change window decorations");
     g_signal_connect(button, "clicked", G_CALLBACK(on_open_theme_settings), NULL);
     gtk_box_pack_start(GTK_BOX(vbox), button, TRUE, TRUE, 0);
 
