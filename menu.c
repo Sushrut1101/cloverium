@@ -3,7 +3,7 @@
 #include <stdlib.h> 
 
 void open_browser() {
-    system("chromium &"); 
+    system("firefox &"); 
 }
 
 void open_file_manager() {
@@ -11,20 +11,19 @@ void open_file_manager() {
 }
 
 void open_terminal() {
-    system("xfce4-terminal");
+    system("xfce4-terminal &");
 }
 
 void open_screen_settings() {
-    system("xfce4-display-settings"); 
+    system("xfce4-display-settings &"); 
 }
 
 void open_set_wallpaper() {
-    system("build/settings"); 
+    system("build/settings &"); 
 }
 
 void open_search() {
     system("rofi -show run -theme-str \"window { location: southwest; anchor: southwest; width: 360; height: 260; }\""); 
-    
 }
 
 void open_shutdown() {
